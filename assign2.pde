@@ -122,7 +122,7 @@ void draw(){
           FightershipX=640-Fightership.width-10;
           FightershipY=480/2;
           x=0;
-          HP_num=100;
+          HP_num=20;
           gameState = GAME_RUN;
         }else{
           // hover
