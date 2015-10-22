@@ -28,7 +28,7 @@ void setup(){
   size(640,480);
   x = bx=0;
   y = 200;
-  HP_num=100;
+  HP_num=20;
   randomP=floor(random(100));  
   start1= loadImage("img/start1.png");
   start2= loadImage("img/start2.png");
