@@ -22,7 +22,12 @@ int gameState;
 float EnemyshipX,EnemyshipY;
 float FightershipX,FightershipY;
 float treasureX,treasureY;
-float speed = 20;
+float speed = 10;
+
+boolean upPressed = false;
+boolean downPressed = false;
+boolean leftPressed = false;
+boolean rightPressed = false;
 
 void setup(){
   size(640,480);
@@ -107,6 +112,27 @@ void draw(){
        else
          EnemyshipY+=2;
          
+      if (upPressed == true)
+        FightershipY-=speed;
+      if (FightershipY<=0)
+        FightershipY=0;
+
+      if (downPressed == true)
+        FightershipY+=speed;
+      if (FightershipY>(480-Fightership.height))
+        FightershipY=480-Fightership.height;
+        
+
+      if (leftPressed == true)
+        FightershipX-=speed;
+      if (FightershipX<0)
+        FightershipX=0;        
+
+      if (rightPressed == true)
+        FightershipX+=speed;
+      if (FightershipX>(640-Fightership.width))
+        FightershipX=640-Fightership.width;
+         
       if (HP_num<=0)
          gameState = GAME_LOSE;
       
@@ -139,32 +165,39 @@ void draw(){
 
 
 void keyPressed() {
-  if (key == CODED) {
+  if (key == CODED) { // detect special keys 
     switch (keyCode) {
       case UP:
-        FightershipY-=speed;
-        if (FightershipY<=0)
-         FightershipY=0;
+        upPressed = true;
         break;
       case DOWN:
-        FightershipY += speed;
-        if (FightershipY+Fightership.height>=480)
-         FightershipY=480-Fightership.height;
+        downPressed = true;
         break;
       case LEFT:
-        FightershipX -= speed;
-        if (FightershipX<=0)
-         FightershipX=0;        
+        leftPressed = true;
         break;
       case RIGHT:
-        FightershipX += speed;
-        if (FightershipX+Fightership.width>=640)
-         FightershipX=640-Fightership.width;
-
+        rightPressed = true;
         break;
     }
   }
 }
-void keyReleased(){
 
+void keyReleased() {
+  if (key == CODED) {
+    switch (keyCode) {
+      case UP:
+        upPressed = false;
+        break;
+      case DOWN:
+        downPressed = false;
+        break;
+      case LEFT:
+        leftPressed = false;
+        break;
+      case RIGHT:
+        rightPressed = false;
+        break;
+    }
+  }
 }
