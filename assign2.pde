@@ -56,7 +56,7 @@ void draw(){
   
   switch (gameState){
     case GAME_START:
-    image(start1,0,0);
+    image(start2,0,0);
       if ((mouseX > 200 && mouseX < 460) && (mouseY > 375 && mouseY < 420)){
         if (mousePressed){
           // click
@@ -64,7 +64,7 @@ void draw(){
         }else{
           // hover
           noStroke();
-          image(start2,0,0);        
+          image(start1,0,0);        
         }
       }   
     break;
